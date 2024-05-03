@@ -1,73 +1,49 @@
-import {
-  Avatar,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Navbar,
-  NavbarContent,
-} from '@nextui-org/react';
+import { Navbar } from '@material-tailwind/react';
 import React from 'react';
 import { CgClose } from 'react-icons/cg';
 import { TbMenuDeep } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
+import Notifications from './Notifications';
+import ProfileMenu from './ProfileMenu';
 
-export default function App() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+const Navigation = ({
+  isMenuOpen,
+  setIsMenuOpen,
+}: {
+  isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
     <Navbar
-      className="bg-primaryColor"
-      maxWidth="full"
-      position="sticky"
-      isBordered
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
+      className="sticky top-0 inset-0 z-50 max-w-full rounded-none py-1 shadow-none px-4 border-none bg-primaryColor h-[3rem]"
+      placeholder={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined}
     >
-      <div className="grid grid-cols-5 w-full">
-        <div className="col-span-1 gap-2 flex items-center">
-          <h3 className="text-xl font-semibold cursor-pointer">
-            {isMenuOpen ? (
-              <CgClose onClick={() => setIsMenuOpen(false)} />
-            ) : (
-              <TbMenuDeep onClick={() => setIsMenuOpen(true)} />
-            )}
-          </h3>
-
-          <h3 className="text-xl font-semibold">Job Supply</h3>
+      <div className="flex items-center justify-between text-blue-gray-900">
+        <div className="flex items-center gap-2">
+          {isMenuOpen ? (
+            <CgClose
+              onClick={() => setIsMenuOpen(false)}
+              className=" cursor-pointer"
+            />
+          ) : (
+            <TbMenuDeep
+              onClick={() => setIsMenuOpen(true)}
+              className=" cursor-pointer"
+            />
+          )}
+          <Link to="/" className="mr-4 cursor-pointer py-1.5 font-medium">
+            Job Supply
+          </Link>
         </div>
-        <NavbarContent as="div" justify="end" className="col-span-4">
-          <Dropdown placement="bottom-end">
-            <DropdownTrigger>
-              <Avatar
-                isBordered
-                as="button"
-                className="transition-transform"
-                color="secondary"
-                name="Jason Hughes"
-                size="sm"
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-              />
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Profile Actions" variant="flat">
-              <DropdownItem key="profile" className="h-14 gap-2">
-                <p className="font-semibold">Signed in as</p>
-                <p className="font-semibold">zoey@example.com</p>
-              </DropdownItem>
-              <DropdownItem key="settings">My Settings</DropdownItem>
-              <DropdownItem key="team_settings">Team Settings</DropdownItem>
-              <DropdownItem key="analytics">Analytics</DropdownItem>
-              <DropdownItem key="system">System</DropdownItem>
-              <DropdownItem key="configurations">Configurations</DropdownItem>
-              <DropdownItem key="help_and_feedback">
-                Help & Feedback
-              </DropdownItem>
-              <DropdownItem key="logout" color="danger">
-                Log Out
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </NavbarContent>
+        <div className="flex items-center gap-6">
+          <Notifications />
+          <ProfileMenu />
+        </div>
       </div>
     </Navbar>
   );
-}
+};
+
+export default Navigation;

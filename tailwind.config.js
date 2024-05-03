@@ -1,11 +1,7 @@
-const { nextui } = require('@nextui-org/react');
+import withMT from '@material-tailwind/react/utils/withMT';
 
-export default {
-  content: [
-    './index.html',
-    './src/**/*.{ts,tsx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
-  ],
+export default withMT({
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       transitionProperty: {
@@ -21,6 +17,5 @@ export default {
       },
     },
   },
-  darkMode: 'class',
-  plugins: [nextui()],
-};
+  plugins: [],
+});

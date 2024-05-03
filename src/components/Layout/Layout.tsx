@@ -14,9 +14,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-primaryColor">
+    <div className="flex flex-col h-screen overflow-hidden bg-secondaryColor">
       <header className="bg-secondaryColor" onClick={toggleSidebar}>
-        <Navigation />
+        <Navigation
+          isMenuOpen={isSidebarOpen}
+          setIsMenuOpen={setIsSidebarOpen}
+        />
       </header>
 
       {/* Main content */}
@@ -31,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
 
         {/* Main content area */}
-        <main className="flex-1 overflow-y-scroll p-3" id="customScrollbar">
+        <main className="flex-1 overflow-y-scroll p-3" id="custom-scrollbar">
           {children}
         </main>
       </div>

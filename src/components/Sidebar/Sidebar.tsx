@@ -1,75 +1,77 @@
-import IconWrapper from '@/components/Sidebar/IconWrapper';
-import { Listbox, ListboxItem } from '@nextui-org/react';
-import React from 'react';
+import { Card, List, ListItem, ListItemPrefix } from '@material-tailwind/react';
 import { FiUsers } from 'react-icons/fi';
 import { IoAnalytics, IoBriefcaseOutline } from 'react-icons/io5';
 import { MdOutlineDashboardCustomize } from 'react-icons/md';
 import { PiUsersThree } from 'react-icons/pi';
-import { useNavigate } from 'react-router-dom';
-import ItemCounter from './ItemCounter';
+import { Link } from 'react-router-dom';
 
 const sidebarItems = [
   {
     title: 'Dashboard',
     link: '/',
-    icon: <MdOutlineDashboardCustomize className="text-lg" />,
-    color: 'bg-success/10 text-success',
+    icon: <MdOutlineDashboardCustomize className="text-lg text-teal-500" />,
   },
   {
     title: 'Analytics',
     link: '/analytics',
-    icon: <IoAnalytics className="text-lg" />,
-    color: 'bg-default/50 text-foreground',
+    icon: <IoAnalytics className="text-lg text-yellow-500" />,
   },
   {
     title: 'Applications',
     link: '/applications',
-    icon: <PiUsersThree className="text-lg" />,
-    color: 'bg-primary/10 text-primary',
+    icon: <PiUsersThree className="text-lg text-green-500" />,
   },
   {
     title: 'Jobs',
     link: '/jobs',
-    icon: <IoBriefcaseOutline className="text-lg" />,
-    color: 'bg-secondary/10 text-secondary',
+    icon: <IoBriefcaseOutline className="text-lg text-blue-500" />,
   },
 
   {
     title: 'Users',
     link: '/users',
-    icon: <FiUsers className="text-lg" />,
-    color: 'bg-warning/10 text-warning',
+    icon: <FiUsers className="text-lg text-red-500" />,
   },
 ];
 
 const Sidebar = () => {
-  const navigate = useNavigate();
-
   return (
-    <React.Fragment>
-      <Listbox
-        aria-label="sidebar"
-        className="divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 w-full shadow-small rounded-none h-[100vh]"
-        itemClasses={{
-          base: 'px-3 first:rounded-t last:rounded-b rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80',
-        }}
+    <Card
+      className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-2 shadow-xl shadow-blue-gray-900/5 rounded-none overflow-y-scroll"
+      id="custom-scrollbar"
+      placeholder={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined}
+    >
+      <List
+        placeholder={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+        className="p-1"
       >
-        {sidebarItems.map((item, index) => {
+        {sidebarItems.map((item) => {
           return (
-            <ListboxItem
-              key={index}
-              endContent={<ItemCounter number={6} />}
-              startContent={
-                <IconWrapper className={item.color}>{item.icon}</IconWrapper>
-              }
-              onClick={() => navigate(item.link)}
-            >
-              {item.title}
-            </ListboxItem>
+            <Link to={item.link}>
+              <ListItem
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+                className="p-2 hover:rounded rounded"
+              >
+                <ListItemPrefix
+                  placeholder={undefined}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  {item.icon}
+                </ListItemPrefix>
+                {item.title}
+              </ListItem>
+            </Link>
           );
         })}
-      </Listbox>
-    </React.Fragment>
+      </List>
+    </Card>
   );
 };
 
