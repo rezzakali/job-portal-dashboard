@@ -1,8 +1,7 @@
 import { Typography } from '@material-tailwind/react';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
 
 interface PaginationProps {
   totalItems: number;
@@ -19,14 +18,10 @@ const PaginationComponent: React.FC<PaginationProps> = ({
   handleLimit,
   page,
 }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const dispatch = useDispatch();
-
   const pageCount = Math.ceil(totalItems / itemsPerPage);
 
   const handleClick = (pageNumber: number) => {
     onPageChange(pageNumber);
-    setCurrentPage(pageNumber);
   };
 
   // previous button handler
@@ -34,7 +29,6 @@ const PaginationComponent: React.FC<PaginationProps> = ({
     if (page > 1) {
       const newPage = page - 1;
       onPageChange(newPage);
-      setCurrentPage(newPage);
     }
   };
 
@@ -43,7 +37,6 @@ const PaginationComponent: React.FC<PaginationProps> = ({
     if (page < pageCount) {
       const newPage = page + 1;
       onPageChange(newPage);
-      setCurrentPage(newPage);
     }
   };
 
