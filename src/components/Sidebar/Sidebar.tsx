@@ -37,7 +37,7 @@ const sidebarItems = [
 const Sidebar = () => {
   return (
     <Card
-      className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-2 shadow-xl shadow-blue-gray-900/5 rounded-none overflow-y-scroll"
+      className="h-[calc(100vh-60px)] w-full max-w-[20rem] shadow-xl shadow-blue-gray-900/5 rounded-none overflow-y-scroll"
       id="custom-scrollbar"
       placeholder={undefined}
       onPointerEnterCapture={undefined}

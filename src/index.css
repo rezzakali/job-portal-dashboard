@@ -45,4 +45,7 @@
   #custom-scrollbar::-webkit-scrollbar-track {
     background-color: #ffffff;
   }
+  #primary-btn {
+    @apply text-white shadow-none hover:shadow-none focus:shadow-none rounded;
+  }
 }

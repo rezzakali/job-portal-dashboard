@@ -1,4 +1,5 @@
 import { Breadcrumbs, Typography } from '@material-tailwind/react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const BreadCrumbComponent = () => {
@@ -6,6 +7,7 @@ const BreadCrumbComponent = () => {
   const breadcrumbs = pathname.toLowerCase().split('/');
   breadcrumbs.shift();
   let currentRoute = '';
+
   return (
     <Breadcrumbs
       placeholder={undefined}
@@ -28,20 +30,33 @@ const BreadCrumbComponent = () => {
 
       {breadcrumbs.map((item, index) => {
         currentRoute = `${currentRoute}/${item}`;
+        const isLast = breadcrumbs.length - 1;
         return (
-          <Link to={currentRoute} key={index}>
-            <Typography
-              placeholder={undefined}
-              variant="h6"
-              className={`capitalize cursor-pointer ${
-                index === breadcrumbs.length - 1 && '#1D5CCD'
-              }`}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
-              {item}
-            </Typography>
-          </Link>
+          <React.Fragment key={index}>
+            {isLast ? (
+              <Typography
+                placeholder={undefined}
+                variant="h6"
+                className="capitalize cursor-pointer"
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+              >
+                {item}
+              </Typography>
+            ) : (
+              <Link to={currentRoute}>
+                <Typography
+                  placeholder={undefined}
+                  variant="h6"
+                  className="capitalize cursor-pointer"
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                >
+                  {item}
+                </Typography>
+              </Link>
+            )}
+          </React.Fragment>
         );
       })}
     </Breadcrumbs>
