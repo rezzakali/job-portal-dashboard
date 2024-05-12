@@ -7,6 +7,7 @@ const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_URL,
     credentials: 'include',
+    mode: 'no-cors',
     // eslint-disable-next-line no-empty-pattern
     prepareHeaders: (headers, {}) => {
       const token = localStorage.getItem('x-access-token');
