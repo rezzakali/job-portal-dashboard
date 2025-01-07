@@ -9,30 +9,18 @@ import {
 
 const ProfileMenu = () => {
   return (
-    <Menu>
+    <Menu placement="bottom-start">
       <MenuHandler>
         <Avatar
           size="sm"
           variant="circular"
-          alt="tania andrew"
+          alt="admin"
           className="cursor-pointer"
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
+          src="/profile.png"
         />
       </MenuHandler>
-      <MenuList
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      >
-        <MenuItem
-          className="flex items-center gap-2"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
+      <MenuList>
+        <MenuItem className="flex items-center gap-2">
           <svg
             width="16"
             height="16"
@@ -48,22 +36,11 @@ const ProfileMenu = () => {
             />
           </svg>
 
-          <Typography
-            variant="small"
-            className="font-medium"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
+          <Typography variant="small" className="font-medium">
             My Profile
           </Typography>
         </MenuItem>
-        <MenuItem
-          className="flex items-center gap-2"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
+        <MenuItem className="flex items-center gap-2">
           <svg
             width="16"
             height="16"
@@ -79,22 +56,11 @@ const ProfileMenu = () => {
             />
           </svg>
 
-          <Typography
-            variant="small"
-            className="font-medium"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
+          <Typography variant="small" className="font-medium">
             Edit Profile
           </Typography>
         </MenuItem>
-        <MenuItem
-          className="flex items-center gap-2"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
+        <MenuItem className="flex items-center gap-2">
           <svg
             width="14"
             height="14"
@@ -110,22 +76,11 @@ const ProfileMenu = () => {
             />
           </svg>
 
-          <Typography
-            variant="small"
-            className="font-medium"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
+          <Typography variant="small" className="font-medium">
             Inbox
           </Typography>
         </MenuItem>
-        <MenuItem
-          className="flex items-center gap-2"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
+        <MenuItem className="flex items-center gap-2">
           <svg
             width="16"
             height="16"
@@ -140,23 +95,12 @@ const ProfileMenu = () => {
               fill="#90A4AE"
             />
           </svg>
-          <Typography
-            variant="small"
-            className="font-medium"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
+          <Typography variant="small" className="font-medium">
             Help
           </Typography>
         </MenuItem>
         <hr className="my-2 border-blue-gray-50" />
-        <MenuItem
-          className="flex items-center gap-2 "
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
+        <MenuItem className="flex items-center gap-2 ">
           <svg
             width="16"
             height="14"
@@ -171,13 +115,7 @@ const ProfileMenu = () => {
               fill="#90A4AE"
             />
           </svg>
-          <Typography
-            variant="small"
-            className="font-medium"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
+          <Typography variant="small" className="font-medium">
             Sign Out
           </Typography>
         </MenuItem>

@@ -39,32 +39,13 @@ const Sidebar = () => {
     <Card
       className="h-[calc(100vh-60px)] w-full max-w-[20rem] shadow-xl shadow-blue-gray-900/5 rounded-none overflow-y-scroll"
       id="custom-scrollbar"
-      placeholder={undefined}
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
     >
-      <List
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-        className="p-1"
-      >
+      <List className="p-1">
         {sidebarItems.map((item) => {
           return (
-            <Link to={item.link}>
-              <ListItem
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-                className="p-2 hover:rounded rounded"
-              >
-                <ListItemPrefix
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
-                >
-                  {item.icon}
-                </ListItemPrefix>
+            <Link key={item.link} to={item.link}>
+              <ListItem className="p-2 hover:rounded rounded">
+                <ListItemPrefix>{item.icon}</ListItemPrefix>
                 {item.title}
               </ListItem>
             </Link>

@@ -124,14 +124,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
       </nav>
 
       <div className="flex items-center space-x-1">
-        <Typography
-          variant="small"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          limit per page
-        </Typography>
+        <Typography variant="small">limit per page</Typography>
         <select
           name="limit"
           id="limit"

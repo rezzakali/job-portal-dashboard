@@ -17,15 +17,12 @@ const FilterComponent = () => {
         <div className="bg-primaryColor [&>*:first-child]:min-w-32">
           <Select
             label="Role"
-            placeholder={undefined}
             value={role}
             onChange={(value) => {
               if (typeof value === 'string') {
                 dispatch(setRole(value));
               }
             }}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
           >
             <Option value="all">All</Option>
             <Option value="job seeker">Job Seeker</Option>

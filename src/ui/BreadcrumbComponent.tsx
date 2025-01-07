@@ -9,20 +9,12 @@ const BreadCrumbComponent = () => {
   let currentRoute = '';
 
   return (
-    <Breadcrumbs
-      placeholder={undefined}
-      style={{ margin: '.5rem 0' }}
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
-      className="bg-transparent"
-    >
+    <Breadcrumbs style={{ margin: '.5rem 0' }} className="bg-transparent">
       <Link to="/">
         <Typography
           placeholder={undefined}
           variant="h6"
           style={{ cursor: 'pointer' }}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
         >
           Dashboard
         </Typography>
@@ -38,8 +30,6 @@ const BreadCrumbComponent = () => {
                 placeholder={undefined}
                 variant="h6"
                 className="capitalize cursor-pointer"
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
               >
                 {item}
               </Typography>
@@ -49,8 +39,6 @@ const BreadCrumbComponent = () => {
                   placeholder={undefined}
                   variant="h6"
                   className="capitalize cursor-pointer"
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
                 >
                   {item}
                 </Typography>

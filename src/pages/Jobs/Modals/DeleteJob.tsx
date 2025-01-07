@@ -1,6 +1,6 @@
 import { RootState } from '@/app/store';
-import { useDeleteUserMutation } from '@/features/users/usersApi';
-import { deleteUserFromRedux, setUserId } from '@/features/users/usersSlice';
+import { useDeleteJobMutation } from '@/features/jobs/jobsApi';
+import { deleteJobFromRedux, setJobId } from '@/features/jobs/jobsSlice';
 import isApiResponseError from '@/utils/isApiResponseError';
 import {
   Button,
@@ -15,29 +15,29 @@ import toast from 'react-hot-toast';
 import { MdClose } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 
-const DeleteUser = ({
+const DeleteJob = ({
   open,
   setOpen,
 }: {
   open: boolean;
   setOpen: React.Dispatch<SetStateAction<boolean>>;
 }) => {
-  const { userId } = useSelector((state: RootState) => state.user);
+  const { jobId } = useSelector((state: RootState) => state.jobs);
 
-  const [deleteUser, { data: response, isLoading, isError, error, isSuccess }] =
-    useDeleteUserMutation();
+  const [deleteJob, { data: response, isLoading, isError, error, isSuccess }] =
+    useDeleteJobMutation();
 
   const dispatch = useDispatch();
 
   const handleDeleteUser = () => {
-    deleteUser(userId!);
+    deleteJob(jobId!);
   };
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(deleteUserFromRedux());
-      toast.success(response?.message || 'User deleted successfully!');
-      dispatch(setUserId(null));
+      dispatch(deleteJobFromRedux());
+      toast.success(response?.message || 'Job deleted successfully!');
+      dispatch(setJobId(null));
       setOpen(false);
     }
     if (isError) {
@@ -49,27 +49,24 @@ const DeleteUser = ({
 
   return (
     <Dialog size="sm" open={open} handler={() => !isLoading && setOpen(false)}>
-      <DialogHeader placeholder={undefined} className="justify-between">
-        <Typography placeholder={undefined} className="font-medium capitalize">
-          User delete confirmation
-        </Typography>
-        <Typography placeholder={undefined}>
+      <DialogHeader className="justify-between">
+        <Typography className="font-medium capitalize">Confirmation</Typography>
+        <Typography>
           <MdClose
             className="w-5 h-5 cursor-pointer text-gray-700 hover:text-gray-800"
             onClick={() => !isLoading && setOpen(false)}
           />
         </Typography>
       </DialogHeader>
-      <DialogBody placeholder={undefined}>
-        <Typography placeholder={undefined} variant="h6">
-          Are you sure want to delete this user?
+      <DialogBody>
+        <Typography variant="h6">
+          Are you sure want to delete this job?
         </Typography>
       </DialogBody>
-      <DialogFooter placeholder={undefined} className="">
+      <DialogFooter>
         <Button
           size="sm"
           fullWidth
-          placeholder={undefined}
           color="red"
           id="primary-btn"
           className="w-full flex items-center justify-center py-2.5"
@@ -84,4 +81,4 @@ const DeleteUser = ({
   );
 };
 
-export default DeleteUser;
+export default DeleteJob;

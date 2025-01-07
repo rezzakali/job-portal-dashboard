@@ -14,12 +14,7 @@ const Navigation = ({
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <Navbar
-      className="sticky top-0 inset-0 z-50 max-w-full rounded-none py-1 shadow-none px-4 border-none bg-primaryColor h-[3rem]"
-      placeholder={undefined}
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
-    >
+    <Navbar className="sticky top-0 inset-0 z-50 max-w-full rounded-none py-1 shadow-none px-4 border-none bg-primaryColor h-[3rem]">
       <div className="flex items-center justify-between text-blue-gray-900">
         <div className="flex items-center gap-2">
           {isMenuOpen ? (

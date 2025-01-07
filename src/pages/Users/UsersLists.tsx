@@ -30,7 +30,6 @@ import {
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { BiPencil } from 'react-icons/bi';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { MdDelete } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
@@ -128,18 +127,11 @@ const UsersLists = () => {
 
   return (
     <React.Fragment>
-      <Card
-        placeholder={undefined}
-        className="h-full w-full bg-primaryColor"
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      >
+      <Card className="h-full w-full bg-primaryColor">
         <CardBody
           placeholder={undefined}
           className="p-0 max-h-[100vh] overflow-y-scroll rounded-md"
           id="custom-scrollbar"
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
         >
           <table className="w-full min-w-max table-auto text-left">
             <thead>
@@ -153,8 +145,6 @@ const UsersLists = () => {
                       placeholder={undefined}
                       variant="small"
                       className={`font-semibold text-gray-600 flex items-center space-x-1`}
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
                     >
                       {head}
                     </Typography>
@@ -166,10 +156,9 @@ const UsersLists = () => {
               {isFetching && (
                 <tr>
                   <td colSpan={5}>
-                    <Spinner
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                    />
+                    <Typography className="flex items-center justify-center mt-auto h-[50vh] gap-2">
+                      <Spinner fontSize={10} /> Loading...
+                    </Typography>
                   </td>
                 </tr>
               )}
@@ -208,8 +197,6 @@ const UsersLists = () => {
                             alt={'image'}
                             size="sm"
                             placeholder={undefined}
-                            onPointerEnterCapture={undefined}
-                            onPointerLeaveCapture={undefined}
                           />
                           <div className="flex flex-col">
                             <Typography
@@ -217,8 +204,6 @@ const UsersLists = () => {
                               color="blue-gray"
                               className="font-normal"
                               placeholder={undefined}
-                              onPointerEnterCapture={undefined}
-                              onPointerLeaveCapture={undefined}
                             >
                               {email}
                             </Typography>
@@ -227,8 +212,6 @@ const UsersLists = () => {
                               color="blue-gray"
                               className="font-normal opacity-70"
                               placeholder={undefined}
-                              onPointerEnterCapture={undefined}
-                              onPointerLeaveCapture={undefined}
                             >
                               {phone}
                             </Typography>
@@ -245,8 +228,6 @@ const UsersLists = () => {
                           color="blue-gray"
                           className="font-normal"
                           placeholder={undefined}
-                          onPointerEnterCapture={undefined}
-                          onPointerLeaveCapture={undefined}
                         >
                           {address?.city} <br />
                           {address?.postalCode}
@@ -258,30 +239,19 @@ const UsersLists = () => {
                           color="blue-gray"
                           className="font-normal"
                           placeholder={undefined}
-                          onPointerEnterCapture={undefined}
-                          onPointerLeaveCapture={undefined}
                         >
                           {moment(createdAt).format('ll')}
                         </Typography>
                       </td>
                       <td className={classes}>
                         <div className="flex items-center justify-start space-x-2">
-                          <Tooltip content="Edit User">
-                            <Typography
-                              className="cursor-pointer"
-                              placeholder={undefined}
-                              onPointerEnterCapture={undefined}
-                              onPointerLeaveCapture={undefined}
-                            >
-                              <BiPencil className="h-4 w-4" />
-                            </Typography>
-                          </Tooltip>
                           {role !== 'super-admin' && (
-                            <Tooltip content="Delete">
+                            <Tooltip
+                              content="Delete"
+                              className="rounded bg-gray-700"
+                            >
                               <Typography
                                 placeholder={undefined}
-                                onPointerEnterCapture={undefined}
-                                onPointerLeaveCapture={undefined}
                                 className="cursor-pointer"
                                 onClick={() => {
                                   dispatch(setUserId(_id));
@@ -296,30 +266,22 @@ const UsersLists = () => {
                             <Menu placement="left-start">
                               <Tooltip
                                 content="Change role"
-                                className="rounded"
+                                className="rounded bg-gray-700"
                                 placement="left-start"
                               >
                                 <MenuHandler>
                                   <Typography
                                     placeholder={undefined}
-                                    onPointerEnterCapture={undefined}
-                                    onPointerLeaveCapture={undefined}
                                     className="cursor-pointer"
                                   >
                                     <HiOutlineDotsVertical />
                                   </Typography>
                                 </MenuHandler>
                               </Tooltip>
-                              <MenuList
-                                placeholder={undefined}
-                                onPointerEnterCapture={undefined}
-                                onPointerLeaveCapture={undefined}
-                              >
+                              <MenuList placeholder={undefined}>
                                 {roles.map((role) => (
                                   <MenuItem
                                     placeholder={undefined}
-                                    onPointerEnterCapture={undefined}
-                                    onPointerLeaveCapture={undefined}
                                     className="capitalize"
                                     onClick={() =>
                                       handleChangeRole({ role, userId: _id })
@@ -342,8 +304,6 @@ const UsersLists = () => {
         <CardFooter
           className="flex items-center justify-between border-t border-blue-gray-50 p-4"
           placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
         >
           {!isFetching && response?.count > 10 && (
             <PaginationComponent

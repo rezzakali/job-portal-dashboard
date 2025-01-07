@@ -1,16 +1,13 @@
-import { RootState } from '@/app/store';
-import { setSearchValue, setValue } from '@/features/users/usersSlice';
+import { setSearchValue } from '@/features/jobs/jobsSlice';
 import useDebounce from '@/hooks/useDebounce';
 import { Input } from '@material-tailwind/react';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosSearch } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-const SearchUserInput: React.FC = () => {
-  const { value } = useSelector((state: RootState) => state.user);
-
-  const inputRef = useRef<HTMLInputElement | null>(null);
+const JobSearchInput: React.FC = () => {
+  const [value, setValue] = useState<string>('');
 
   const dispatch = useDispatch();
 
@@ -18,7 +15,7 @@ const SearchUserInput: React.FC = () => {
   const debouncedSearch = useDebounce(value, 500);
 
   const handleClearInputField = () => {
-    dispatch(setValue(''));
+    setValue('');
     dispatch(setSearchValue(''));
   };
 
@@ -33,7 +30,7 @@ const SearchUserInput: React.FC = () => {
       type="text"
       size="md"
       crossOrigin={undefined}
-      placeholder="Search user by email or phone..."
+      placeholder="Search job by title, company or location..."
       className="!border !border-gray-300  text-gray-900 ring-1 ring-transparent placeholder:opacity-75 focus:!border shadow-none !py-2 rounded !bg-primaryColor"
       labelProps={{
         className: 'hidden',
@@ -47,9 +44,9 @@ const SearchUserInput: React.FC = () => {
         )
       }
       value={value}
-      onChange={(e) => dispatch(setValue(e.target.value))}
+      onChange={(e) => setValue(e.target.value)}
     />
   );
 };
 
-export default SearchUserInput;
+export default JobSearchInput;
