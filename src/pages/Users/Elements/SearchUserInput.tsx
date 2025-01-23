@@ -2,7 +2,7 @@ import { RootState } from '@/app/store';
 import { setSearchValue, setValue } from '@/features/users/usersSlice';
 import useDebounce from '@/hooks/useDebounce';
 import { Input } from '@material-tailwind/react';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { IoIosSearch } from 'react-icons/io';
 import { IoClose } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const SearchUserInput: React.FC = () => {
   const { value } = useSelector((state: RootState) => state.user);
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  // const inputRef = useRef<HTMLInputElement | null>(null);
 
   const dispatch = useDispatch();
 
